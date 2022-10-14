@@ -1,0 +1,4 @@
+secrets.py
+astro_keys.py
+__pycache__/
+.DS_Store

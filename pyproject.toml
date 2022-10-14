@@ -9,6 +9,8 @@ packages = [{include = "astronomy_proj"}]
 [tool.poetry.dependencies]
 python = "^3.7"
 black = "^22.8.0"
+DateTime = "^4.7"
+requests = "^2.28.1"
 
 
 [tool.poetry.group.test.dependencies]
