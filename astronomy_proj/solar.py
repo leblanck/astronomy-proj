@@ -48,13 +48,11 @@ def get_sun_position(lat, lon):
         params=payload,
     )
     data = response.json()
-    azi = data["data"]["table"]["rows"][0]["cells"][0]["position"]["horizontal"][
-        "azimuth"
-    ]["string"]
+    azi = data["data"]["table"]["rows"][0]["cells"][0]["position"][
+        "horizontal"]["azimuth"]["string"]
 
-    alt = data["data"]["table"]["rows"][0]["cells"][0]["position"]["horizontal"][
-        "altitude"
-    ]["string"]
+    alt = data["data"]["table"]["rows"][0]["cells"][0]["position"][
+        "horizontal"]["altitude"]["string"]
 
     return azi, alt
 
@@ -64,7 +62,8 @@ def print_position(azi, alt, loc):
     print to console
     """
     print(
-        f"{loc}\n The Sun is currently at: {azi} degress azimuth and {alt} degress altitude."
+        f"""{loc}\n The Sun is currently at: 
+        {azi} degress azimuth and {alt} degress altitude."""
     )
 
 
