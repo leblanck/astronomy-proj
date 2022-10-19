@@ -62,7 +62,7 @@ def print_position(azi, alt, loc):
     print to console
     """
     print(
-        f"""{loc}\n The Sun is currently at: 
+        f"""{loc}\n The Sun is currently at:
         {azi} degress azimuth and {alt} degress altitude."""
     )
 
