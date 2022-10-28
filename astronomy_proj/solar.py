@@ -2,11 +2,13 @@
 """
 find the sun
 """
-
+import os
 import datetime as dt
 import requests
 from requests.auth import HTTPBasicAuth
-from astro_keys import ASTRONOMY_ID, ASTRONOMY_SECRET
+
+ASTRONOMY_ID = os.environ["ASTRO_ID"]
+ASTRONOMY_SECRET = os.environ["ASTRO_SECRET"]
 
 
 def get_observer_location():
@@ -48,11 +50,13 @@ def get_sun_position(lat, lon):
         params=payload,
     )
     data = response.json()
-    azi = data["data"]["table"]["rows"][0]["cells"][0]["position"][
-        "horizontal"]["azimuth"]["string"]
+    azi = data["data"]["table"]["rows"][0]["cells"][0]["position"]["horizontal"][
+        "azimuth"
+    ]["string"]
 
-    alt = data["data"]["table"]["rows"][0]["cells"][0]["position"][
-        "horizontal"]["altitude"]["string"]
+    alt = data["data"]["table"]["rows"][0]["cells"][0]["position"]["horizontal"][
+        "altitude"
+    ]["string"]
 
     return azi, alt
 
