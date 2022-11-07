@@ -1,4 +1,4 @@
 def test_solar():
-    """ Testing"""
+    """Testing"""
     print("This will pass!")
     assert True
