@@ -1,4 +1,4 @@
-name: Black Format
+name: Style and Format
 
 on: [push]
 
@@ -18,7 +18,10 @@ jobs:
         python-version: '3.10.4'
 
     - name: Install dependencies
-      run: pip install black
+      run: pip install black flake8
+
+    - name: Run flake8
+      run: flake8 --ignore=E501 astronomy_proj
 
     - name: Run black
       continue-on-error: true
@@ -29,4 +32,4 @@ jobs:
       if: steps.black.outcome == 'failure'
       run: |
         black astronomy_proj
-        git commit -
+        git commit

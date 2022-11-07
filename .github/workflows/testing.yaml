@@ -1,0 +1,19 @@
+name: Style and Format
+
+on: [push]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.10.4'
+
+    - name: Install dependencies
+      run: pip install pytest
+
+    - name: Run pytest
+      run: pytest astronomy_proj/test_solar.py
