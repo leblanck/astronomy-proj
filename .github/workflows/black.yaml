@@ -1,0 +1,32 @@
+name: Black Format
+
+on: [push]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    # - name: Configure git user
+    #   run: |
+    #     git config user.name pr-police
+    #     git config user.email pr.police@noreply.github.com
+
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.10.4'
+
+    - name: Install dependencies
+      run: pip install black
+
+    - name: Run black
+      continue-on-error: true
+      id: black
+      run: black --check astronomy_proj
+
+    - name: Blacken code
+      if: steps.black.outcome == 'failure'
+      run: |
+        black astronomy_proj
+        git commit -
